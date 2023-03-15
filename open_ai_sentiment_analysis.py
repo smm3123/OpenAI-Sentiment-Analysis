@@ -20,7 +20,7 @@ responses = [
 for i in range(len(responses)):
     prompt += f"{i + 1}. {responses[i]}\n"
 
-print(prompt)
+print(f"Prompt:\n{prompt}")
 
 
 response = openai.Completion.create(
@@ -36,6 +36,14 @@ response = openai.Completion.create(
 data = response.choices[0].text
 sentiments = data.split("\n")
 
-print(sentiments)
+# Split creates empty first element
+if len(sentiments) > 0:
+  del sentiments[0]
+
+print("Sentiments:")
+for i in range(len(sentiments)):
+  sentiment_val = sentiments[i].split(". ")[1]
+  print(f"{i + 1}. {responses[i]} -> {sentiment_val}")
+
 print()
-print(response)
+print(f"Response:\n{response}")
