@@ -5,7 +5,8 @@ import openai
 load_dotenv()
 openai.api_key = os.getenv("API_KEY")
 
-prompt = "Determine whether the sentiment in each of these responses is positive, negative, or neutral:\n\n"
+# prompt = "Determine whether the sentiment in each of these responses is positive, negative, or neutral:\n\n"
+prompt = "Determine what the sentiment of each of these responses is on a scale of 1 - 5, where 1 is the most negative, 3 is neutral, and 5 is positive:\n"
 
 responses = [
     "Could do better work next time, currently still progress that needs to be made",
